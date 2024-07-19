@@ -1,7 +1,19 @@
 <script>
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
+	let datas = [
+		{
+			image: "/images/3.png",
+			text: "This application is designed to streamline your workforce management. Easily track attendance, manage annual leave requests, and handle reimbursement submissions all in one place.",
+		},
+		{
+			image: "/images/2.png",
+			text: "This application is designed to streamline store visit marketing, simplify the generation of monthly commission reports, and facilitate easy payslip downloads.",
+		},
+
+		{
+			image: "/images/1.png",
+			text: "This application is designed to help you efficiently manage your expenses, track your income, and generate detailed monthly reports.",
+		},
+	];
 </script>
 
 <svelte:head>
@@ -9,51 +21,42 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
+<div class="text-column">
+	<p
+		style="font-family: Comic Sans MS cursive; font-size: 1.5em; text-align:center;"
+	>
+		I've successfully built and launched apps on both the Play Store and App
+		Store. From brainstorming ideas to seeing them live, I love every step
+		of the process. Let's team up and create something amazing together!
+	</p>
+</div>
 
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-	<Counter />
-</section>
+<div class="data">
+	{#each datas as data, i}
+		<div class="content">
+			<img src={data.image} alt="${i}" />
+			<p style="font-family: Comic Sans MS cursive; text-align:center;">
+				{data.text}
+			</p>
+		</div>
+	{/each}
+</div>
 
 <style>
-	section {
+	.data {
+		display: flex;
+		flex-direction: row;
+		gap: 20px;
+		width: 100%;
+		overflow: auto;
+	}
+	.content {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
+		gap: 20px;
 	}
-
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
+	.content img {
+		width: 700px;
+		height: 350px;
 	}
 </style>
