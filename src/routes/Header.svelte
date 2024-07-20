@@ -1,6 +1,5 @@
 <script>
 	import { page } from "$app/stores";
-	import logo from "$lib/images/itachi.png";
 </script>
 
 <header>
