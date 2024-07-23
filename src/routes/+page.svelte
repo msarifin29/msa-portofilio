@@ -1,8 +1,10 @@
 <script>
 	let yes = true;
+	import playstore from "$lib/images/play_store.svg";
+	import apptore from "$lib/images/app_store.svg";
 	let datas = [
 		{
-			image: "/images/3.png",
+			image: "/images/j_life.jpg",
 			text: "This application is designed to streamline your workforce management. Easily track attendance, manage annual leave requests, and handle reimbursement submissions all in one place.",
 
 			frontend: {
@@ -18,9 +20,14 @@
 				],
 			},
 			backend: { name: null, db: null, pkg: [] },
+
+			playstore:
+				"https://play.google.com/store/search?q=jobseeker%20life&c=apps&hl=id",
+			appstore:
+				"https://apps.apple.com/id/app/jobseeker-life/id6466165581",
 		},
 		{
-			image: "/images/2.png",
+			image: "/images/rsm.jpg",
 			text: "This application is designed to streamline store visit marketing, simplify the generation of monthly commission reports, and facilitate easy payslip downloads.",
 			frontend: {
 				name: "Flutter",
@@ -35,28 +42,31 @@
 				],
 			},
 			backend: { name: null, db: null, pkg: [] },
+			playstore:
+				"https://play.google.com/store/apps/details?id=com.rsm.randu_sales_mobile&hl=id",
+			appstore: null,
 		},
 
-		{
-			image: "/images/1.png",
-			text: "This application is designed to help you efficiently manage your expenses, track your income, and generate detailed monthly reports.",
-			frontend: {
-				name: "Flutter",
-				pkg: [
-					"Flutter Bloc",
-					"Local Storage",
-					"Depenjensi Injection",
-					"Camera",
-					"Geolocation",
-					"Rest API",
-				],
-			},
-			backend: {
-				name: "Go",
-				db: "Postgres",
-				pkg: ["Authentication JWT Token", "Pagination", "SMTP Email"],
-			},
-		},
+		// {
+		// 	image: "/images/1.png",
+		// 	text: "This application is designed to help you efficiently manage your expenses, track your income, and generate detailed monthly reports.",
+		// 	frontend: {
+		// 		name: "Flutter",
+		// 		pkg: [
+		// 			"Flutter Bloc",
+		// 			"Local Storage",
+		// 			"Depenjensi Injection",
+		// 			"Camera",
+		// 			"Geolocation",
+		// 			"Rest API",
+		// 		],
+		// 	},
+		// 	backend: {
+		// 		name: "Go",
+		// 		db: "Postgres",
+		// 		pkg: ["Authentication JWT Token", "Pagination", "SMTP Email"],
+		// 	},
+		// },
 	];
 </script>
 
@@ -82,8 +92,33 @@
 			>
 				{data.text}
 			</p>
-			<div class="row justify-content: space-between;">
-				<div class="column">
+
+			<div
+				style="display:flex; flex-direction:column; justify-content: space-between;"
+			>
+				<div
+					style="display: flex; flex-direction:row; align-items:center; width:100%;  justify-content:center; gap:50px;"
+				>
+					<a href={data.playstore}>
+						<img
+							src={playstore}
+							alt="Play Store"
+							style="width: 100%; height:200px;"
+						/>
+					</a>
+
+					{#if data.appstore != null}
+						<a href={data.appstore}>
+							<img
+								src={apptore}
+								alt="App Store"
+								style="width: 100%; height:200px;"
+							/>
+						</a>
+					{/if}
+				</div>
+
+				<div>
 					<p
 						style="font-family: Comic Sans MS cursive;  font-weight: 700; font-size: 1.4em; text-align:center;"
 					>
@@ -92,13 +127,13 @@
 					{#each data.frontend.pkg as t}
 						<div
 							class="chip"
-							style="font-family: Comic Sans MS cursive; font-size: 1.1em; text-align:center;"
+							style="font-family: Comic Sans MS cursive; font-size: 1.1em; text-align:center; color: yellow;"
 						>
 							{t}
 						</div>
 					{/each}
 				</div>
-				<div class="column">
+				<div>
 					<p
 						style="font-family: Comic Sans MS cursive; font-weight: 700; font-size: 1.4em; text-align:center;"
 					>
@@ -154,6 +189,6 @@
 		font-size: 16px;
 		line-height: 40px;
 		border-radius: 20px;
-		background-color: #93bddf;
+		background-color: #2f467a;
 	}
 </style>
